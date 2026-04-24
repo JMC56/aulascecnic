@@ -1,4 +1,4 @@
-FROM bitnami/moodle:4.3
+FROM bitnami/moodle:4.5.11
 
 ENV MOODLE_USERNAME=admin
 ENV MOODLE_PASSWORD=JAMES2014$
