@@ -9,16 +9,20 @@ RUN apt-get update && apt-get install -y \
 
 RUN a2enmod rewrite
 
+# 🔥 Forzar HTTPS (por Render)
 RUN echo "SetEnv HTTPS on" >> /etc/apache2/apache2.conf
 
 WORKDIR /var/www/html
 
-# ⬇️ DESCARGA MÁS SEGURA
+# 📥 Descargar Moodle (versión estable)
 RUN curl -fL https://download.moodle.org/download.php/direct/stable404/moodle-4.4.1.zip -o moodle.zip \
     && unzip moodle.zip \
     && mv moodle/* . \
     && rm -rf moodle moodle.zip
 
-RUN chown -R www-data:www-data /var/www/html
+# 🔐 Permisos correctos
+RUN mkdir -p /var/www/moodledata \
+    && chown -R www-data:www-data /var/www \
+    && chmod -R 777 /var/www
 
 EXPOSE 80
