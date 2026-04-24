@@ -11,7 +11,8 @@ RUN a2enmod rewrite
 
 WORKDIR /var/www/html
 
-RUN curl -L https://download.moodle.org/latest.zip -o moodle.zip \
+# ⬇️ DESCARGA MÁS SEGURA
+RUN curl -fL https://download.moodle.org/stable404/moodle-latest-404.zip -o moodle.zip \
     && unzip moodle.zip \
     && mv moodle/* . \
     && rm -rf moodle moodle.zip
