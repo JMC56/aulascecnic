@@ -1,4 +1,4 @@
-FROM bitnami/moodle:latest-debian-11
+FROM bitnami/moodle:4.1.2
 
 ENV MOODLE_USERNAME=admin
 ENV MOODLE_PASSWORD=JAMES2014$
