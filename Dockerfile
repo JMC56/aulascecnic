@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN a2enmod rewrite
 
+RUN echo "SetEnv HTTPS on" >> /etc/apache2/apache2.conf
+
 WORKDIR /var/www/html
 
 # ⬇️ DESCARGA MÁS SEGURA
