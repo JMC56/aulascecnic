@@ -13,10 +13,16 @@ RUN apt-get update && apt-get install -y \
         gd zip opcache \
         intl soap exif
 
+# Configuración PHP recomendada para Moodle
+RUN echo "max_input_vars = 5000" > /usr/local/etc/php/conf.d/moodle.ini \
+    && echo "memory_limit = 512M" >> /usr/local/etc/php/conf.d/moodle.ini \
+    && echo "upload_max_filesize = 100M" >> /usr/local/etc/php/conf.d/moodle.ini \
+    && echo "post_max_size = 100M" >> /usr/local/etc/php/conf.d/moodle.ini
+
 # Habilitar mod_rewrite
 RUN a2enmod rewrite
 
-# Forzar HTTPS (Render proxy)
+# Forzar HTTPS (proxy de Render)
 RUN echo "SetEnv HTTPS on" >> /etc/apache2/apache2.conf
 
 # Carpeta de trabajo
