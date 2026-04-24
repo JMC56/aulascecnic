@@ -1,4 +1,4 @@
-FROM bitnami/moodle:4.1.2
+FROM docker.io/bitnami/moodle:4.3.0-debian-11-r0
 
 ENV MOODLE_USERNAME=admin
 ENV MOODLE_PASSWORD=JAMES2014$
