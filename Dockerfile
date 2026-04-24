@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.0-apache
 
 # Dependencias del sistema + librerías necesarias
 RUN apt-get update && apt-get install -y \
@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -y \
 RUN echo "max_input_vars = 5000" > /usr/local/etc/php/conf.d/moodle.ini \
     && echo "memory_limit = 512M" >> /usr/local/etc/php/conf.d/moodle.ini \
     && echo "upload_max_filesize = 100M" >> /usr/local/etc/php/conf.d/moodle.ini \
-    && echo "post_max_size = 100M" >> /usr/local/etc/php/conf.d/moodle.ini
+    && echo "post_max_size = 100M" >> /usr/local/etc/php/conf.d/moodle.ini \
+    && echo "max_execution_time = 300" >> /usr/local/etc/php/conf.d/moodle.ini
 
 # Habilitar mod_rewrite
 RUN a2enmod rewrite
